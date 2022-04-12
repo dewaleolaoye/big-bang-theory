@@ -9,6 +9,7 @@ const Flex = styled.div`
   flex-wrap: ${({ flexWrap }) => flexWrap};
   padding: ${({ padding }) => padding};
   margin: ${({ margin }) => margin};
+  height: ${({ height }) => height};
 `;
 
 export default Flex;
