@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { Header } from "components";
+import { Choices, Header } from "components";
+import { ThemeProvider } from "styled-components";
+import { theme } from "theme/theme";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -10,9 +12,13 @@ const Container = styled.div`
 
 function App() {
   return (
-    <Container>
-      <Header />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Header />
+
+        <Choices />
+      </Container>
+    </ThemeProvider>
   );
 }
 

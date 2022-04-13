@@ -25,6 +25,7 @@ const ScoreCard = styled.div`
   text-align: center;
   font-weight: 500;
 `;
+
 const Header = () => {
   return (
     <HeaderWrapper>
