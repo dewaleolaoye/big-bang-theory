@@ -21,8 +21,7 @@ const Wrapper = styled.div`
   border: 10px solid #fff;
   cursor: pointer;
   transition: 0.5s;
-  /* position: absolute; */
-  /* top: 25%; */
+  position: absolute;
 
   &:hover {
     transform: rotate(-25deg) scale(1.15);
@@ -36,7 +35,8 @@ const Wrapper = styled.div`
     type === "scissors" &&
     css`
       background: ${({ theme }) => theme.scissors};
-      left: 0%;
+      left: 10%;
+      bottom: 1%;
 
       & > ${Icon} {
         background-image: url(${ScissorsSVG});
@@ -47,7 +47,8 @@ const Wrapper = styled.div`
     type === "rock" &&
     css`
       background: ${({ theme }) => theme.rock};
-      left: 50%;
+      top: 25%;
+      left: 0;
 
       & > ${Icon} {
         background-image: url(${RockSVG});
@@ -58,6 +59,7 @@ const Wrapper = styled.div`
     type === "lizard" &&
     css`
       background: ${({ theme }) => theme.lizard};
+      top: 3%;
 
       & > ${Icon} {
         background-image: url(${LizardSVG});
@@ -68,6 +70,8 @@ const Wrapper = styled.div`
     type === "spock" &&
     css`
       background: ${({ theme }) => theme.spock};
+      top: 25%;
+      right: 0;
 
       & > ${Icon} {
         background-image: url(${SpockSVG});
@@ -78,6 +82,8 @@ const Wrapper = styled.div`
     type === "paper" &&
     css`
       background: ${({ theme }) => theme.paper};
+      right: 10%;
+      bottom: 1%;
 
       & > ${Icon} {
         background-image: url(${PaperSVG});
