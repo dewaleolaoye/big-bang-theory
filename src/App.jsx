@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Choices, Header } from "components";
+import { Choices, Header, ResetSore } from "components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "theme/theme";
 
@@ -18,6 +18,7 @@ function App() {
 
         <Choices />
       </Container>
+      <ResetSore />
     </ThemeProvider>
   );
 }
