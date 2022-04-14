@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   border: 10px solid #fff;
   cursor: pointer;
   transition: 0.5s;
-  position: absolute;
+  position: ${({ position }) => position};
 
   &:hover {
     transform: rotate(-25deg) scale(1.15);
@@ -91,9 +91,9 @@ const Wrapper = styled.div`
     `};
 `;
 
-const ChoiceWrapper = ({ type }) => {
+const ChoiceWrapper = ({ type, onClick, position }) => {
   return (
-    <Wrapper type={type}>
+    <Wrapper type={type} onClick={onClick} position={position}>
       <Icon />
     </Wrapper>
   );
