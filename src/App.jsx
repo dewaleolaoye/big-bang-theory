@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Choices, Header, ResetSore } from "components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "theme/theme";
+import { Provider } from "react-redux";
+import { store } from "store/store";
 
 const Container = styled.div`
   max-width: 1024px;
@@ -10,17 +12,19 @@ const Container = styled.div`
   padding: 1rem;
 `;
 
-function App() {
+const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
-        <Header />
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Header />
 
-        <Choices />
-      </Container>
-      <ResetSore />
-    </ThemeProvider>
+          <Choices />
+        </Container>
+        <ResetSore />
+      </ThemeProvider>
+    </Provider>
   );
-}
+};
 
 export default App;

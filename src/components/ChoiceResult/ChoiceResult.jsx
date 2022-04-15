@@ -39,19 +39,21 @@ const WinWrapper = styled.div`
     `};
 `;
 
-const ChoiceResult = ({ handlePlayAgain }) => {
+const ChoiceResult = ({ handlePlayAgain, dataResult, selectedChoice }) => {
+  console.log(dataResult, "data result");
+
   return (
     <Result>
       <Flex justifyContent="space-between" alignItems="center">
         <div>
           <span>You picked</span>
           <WinWrapper>
-            <ChoiceWrapper type="scissors" />
+            <ChoiceWrapper type={dataResult?.player} />
           </WinWrapper>
         </div>
 
         <WinWrapper>
-          <p>You Won</p>
+          <p>You {dataResult?.results}</p>
           <Button onClick={handlePlayAgain} title="Play Again" />
         </WinWrapper>
 
@@ -59,7 +61,7 @@ const ChoiceResult = ({ handlePlayAgain }) => {
           <span>The house picked</span>
           <WinWrapper type="active">
             <div>
-              <ChoiceWrapper type="paper" />
+              <ChoiceWrapper type={dataResult?.computer} />
             </div>
           </WinWrapper>
         </div>

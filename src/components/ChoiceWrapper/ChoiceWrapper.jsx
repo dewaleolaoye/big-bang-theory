@@ -32,19 +32,7 @@ const Wrapper = styled.div`
   }
 
   ${({ type }) =>
-    type === "scissors" &&
-    css`
-      background: ${({ theme }) => theme.scissors};
-      left: 10%;
-      bottom: 1%;
-
-      & > ${Icon} {
-        background-image: url(${ScissorsSVG});
-      }
-    `};
-
-  ${({ type }) =>
-    type === "rock" &&
+    type === 1 &&
     css`
       background: ${({ theme }) => theme.rock};
       top: 25%;
@@ -56,10 +44,35 @@ const Wrapper = styled.div`
     `};
 
   ${({ type }) =>
-    type === "lizard" &&
+    type === 2 &&
+    css`
+      background: ${({ theme }) => theme.paper};
+
+      top: 3%;
+
+      & > ${Icon} {
+        background-image: url(${PaperSVG});
+      }
+    `};
+
+  ${({ type }) =>
+    type === 3 &&
+    css`
+      background: ${({ theme }) => theme.scissors};
+      top: 25%;
+      right: 0;
+
+      & > ${Icon} {
+        background-image: url(${ScissorsSVG});
+      }
+    `};
+
+  ${({ type }) =>
+    type === 4 &&
     css`
       background: ${({ theme }) => theme.lizard};
-      top: 3%;
+      left: 10%;
+      bottom: 1%;
 
       & > ${Icon} {
         background-image: url(${LizardSVG});
@@ -67,26 +80,15 @@ const Wrapper = styled.div`
     `};
 
   ${({ type }) =>
-    type === "spock" &&
+    type === 5 &&
     css`
       background: ${({ theme }) => theme.spock};
-      top: 25%;
-      right: 0;
 
-      & > ${Icon} {
-        background-image: url(${SpockSVG});
-      }
-    `};
-
-  ${({ type }) =>
-    type === "paper" &&
-    css`
-      background: ${({ theme }) => theme.paper};
       right: 10%;
       bottom: 1%;
 
       & > ${Icon} {
-        background-image: url(${PaperSVG});
+        background-image: url(${SpockSVG});
       }
     `};
 `;
