@@ -2,7 +2,7 @@
 
 ### Icons
 
-- Pentagon shape: https://upload.wikimedia.org/wikipedia/commons/archive/0/04/20060513230039%21Pentagon.svg
+- Pentagon shape: [Pentagon icons created by designvector10 - Flaticon](https://www.flaticon.com/free-icons/pentagon)
 
 ### To run the app:
 
@@ -10,4 +10,4 @@
 
 - Run yarn start
 
-- Open http://localhost:3000 to view it in the browser
+- Open [localhost](http://localhost:3000) to view it in the browser
