@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import PentagonPNG from "assets/pentagon.png";
-import { ChoiceResult, ChoiceWrapper } from "components";
+import { ChoiceResult, ChoiceWrapper, ResetSore } from "components";
 import { Flex } from "shared";
 import { useState } from "react";
 import {
   useGetChoicesQuery,
   usePlayRoundMutation,
 } from "store/choiceApi.service";
+import { useDispatch } from "react-redux";
+import { decrementScore, incrementScore } from "store/score.slice";
 
 const Container = styled.div`
   width: 100%;
@@ -34,62 +36,75 @@ const Choices = () => {
 
   const [_playRound, { data: dataResult }] = usePlayRoundMutation();
 
+  const dispatch = useDispatch();
+
   const handleSelectedChoice = async (id, name) => {
     setChoiceId(id);
     setChoiceName(name);
 
     try {
-      await _playRound({ choice_id: id });
-    } catch (error) {
-      console.log(error, "ERROR HERE");
-    }
+      const response = await _playRound({ choice_id: id }).unwrap();
+
+      if (response.results === "win") {
+        dispatch(incrementScore());
+      }
+
+      if (response.results === "lose") {
+        dispatch(decrementScore());
+      }
+    } catch (error) {}
   };
 
   const handlePlayAgain = async () => {
     setChoiceId("");
   };
+
   return (
-    <Container>
-      {choiceId > 0 ? (
-        <ChoiceResult
-          dataResult={dataResult}
-          handlePlayAgain={handlePlayAgain}
-          selectedChoice={choiceName}
-        />
-      ) : (
-        <Wrapper>
-          <BgImage />
+    <>
+      <Container>
+        {choiceId > 0 ? (
+          <ChoiceResult
+            dataResult={dataResult}
+            handlePlayAgain={handlePlayAgain}
+            selectedChoice={choiceName}
+          />
+        ) : (
+          <Wrapper>
+            <BgImage />
 
-          <Flex
-            flexWrap="wrap"
-            justifyContent="center"
-            gap="1rem"
-            alignItems="center"
-          >
-            {isSuccess &&
-              data.map(({ id, name }) => {
-                return (
-                  <ChoiceWrapper
-                    key={id}
-                    onClick={() => handleSelectedChoice(id, name)}
-                    type={id}
-                    position="absolute"
-                  />
-                );
-              })}
+            <Flex
+              flexWrap="wrap"
+              justifyContent="center"
+              gap="1rem"
+              alignItems="center"
+            >
+              {isSuccess &&
+                data.map(({ id, name }) => {
+                  return (
+                    <ChoiceWrapper
+                      key={id}
+                      onClick={() => handleSelectedChoice(id, name)}
+                      type={id}
+                      position="absolute"
+                    />
+                  );
+                })}
 
-            {isError && <p>{error || error?.message}</p>}
-          </Flex>
-        </Wrapper>
-      )}
+              {isError && <p>{error || error?.message}</p>}
+            </Flex>
+          </Wrapper>
+        )}
 
-      {/* <a
+        {/* <a
         href="https://www.flaticon.com/free-icons/pentagon"
         title="pentagon icons"
       >
         Pentagon icons created by designvector10 - Flaticon
       </a> */}
-    </Container>
+      </Container>
+
+      <ResetSore handlePlayAgain={handlePlayAgain} />
+    </>
   );
 };
 

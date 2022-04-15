@@ -39,9 +39,7 @@ const WinWrapper = styled.div`
     `};
 `;
 
-const ChoiceResult = ({ handlePlayAgain, dataResult, selectedChoice }) => {
-  console.log(dataResult, "data result");
-
+const ChoiceResult = ({ handlePlayAgain, dataResult }) => {
   return (
     <Result>
       <Flex justifyContent="space-between" alignItems="center">

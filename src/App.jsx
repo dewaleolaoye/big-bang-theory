@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Choices, Header, ResetSore } from "components";
+import { Choices, Header } from "components";
 import { ThemeProvider } from "styled-components";
 import { theme } from "theme/theme";
 import { Provider } from "react-redux";
@@ -21,7 +21,6 @@ const App = () => {
 
           <Choices />
         </Container>
-        <ResetSore />
       </ThemeProvider>
     </Provider>
   );

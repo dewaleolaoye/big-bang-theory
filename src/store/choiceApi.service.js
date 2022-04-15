@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const choiceApi = createApi({
-  reducerPath: "choiceApi",
+  reducerPath: "choice",
 
   baseQuery: fetchBaseQuery({
     baseUrl: "https://codechallenge.boohma.com",
@@ -31,6 +31,7 @@ export const choiceApi = createApi({
         },
         // params: choice_id,
       }),
+      transformResponse: (response) => response,
     }),
   }),
 });
